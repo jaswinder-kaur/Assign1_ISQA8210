@@ -42,9 +42,6 @@ INSTALLED_APPS = [
     'clients',
     'crispy_forms',
     'django.contrib.humanize',
-  #  'taggit',
-
-
 ]
 
 MIDDLEWARE = [
@@ -78,21 +75,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = 'clientms.wsgi.application'
-
-
-# Database
-# https://docs.djangoproject.com/en/3.0/ref/settings/#databases
-
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'ec2-3-231-46-238.compute-1.amazonaws.com',
-        'USER': 'eroswrnedkjxfy',
-        'PASSWORD': 'e4b6850aa8210fe6293c230dd01e469dfb005a057940212a1a73f4c66dc2da27',
-        'HOST': 'localhost',
-        'PORT': '5432',
-    }
-}
 
 
 # Password validation
@@ -150,9 +132,13 @@ STATICFILES_DIRS = (
 )
 
 # Update database configuration with $DATABASE_URL.
-db_from_env = dj_database_url.config(conn_max_age=500)
-DATABASES['default'].update(db_from_env)
-DATABASES['default'] = dj_database_url.config()
+#db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
+}
 
 # Simplified static file serving.
 # https://warehouse.python.org/project/whitenoise/
@@ -164,8 +150,8 @@ SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 
 EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_HOST_USER = 'kjas8948@gmail.com'
-EMAIL_HOST_PASSWORD = 'myheroinemejas@890'
+EMAIL_HOST_USER = 'jkaur61289@gmail.com'
+EMAIL_HOST_PASSWORD = 'Supergirl@2020'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 
