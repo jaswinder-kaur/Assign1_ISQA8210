@@ -1,13 +1,7 @@
 from django.urls import path
 from .import views
 
-urlpatterns = [
 
-    path('', views.ClientListView.as_view(), name='client_list'),
-
-]
-from django.urls import path
-from . import views
 from .views import (
     ClientListView,
     ClientUpdateView,
@@ -19,7 +13,7 @@ from .views import (
 
 
 urlpatterns = [
-
+    path('', views.ClientListView.as_view(), name='client_list'),
     path('<int:pk>/edit/',
          ClientUpdateView.as_view(), name='client_edit'),
     path('<int:pk>/',
