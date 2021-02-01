@@ -29,6 +29,25 @@ class ClientCreateView(LoginRequiredMixin,CreateView):
     fields = ('name', 'notes', 'address', 'city', 'state', 'zipcode', 'email', 'cell_phone', 'acct_number')
     login_url = 'login'
 
+class VehicleListView(LoginRequiredMixin,ListView):
+    model = Vehicle
+    template_name = 'vehicle_list.html'
+
+class VehicleCreateView(LoginRequiredMixin,CreateView):
+    model = Vehicle
+    template_name = 'vehicle_new.html'
+    fields = ('make', 'model', 'VIN_number', 'date_of_purchase', 'date_of_last_service')
+    login_url = 'login'
+
+class VehicleUpdateView(LoginRequiredMixin, UpdateView):
+        model = Vehicle
+        fields = ('make', 'model', 'VIN_number', 'date_of_purchase', 'date_of_last_service')
+        template_name = 'vehicle_edit.html'
+        success_url = reverse_lazy('client_list')
+class VehicleDeleteView(LoginRequiredMixin,DeleteView):
+    model = Vehicle
+    template_name = 'vehicle_delete.html'
+    success_url = reverse_lazy('client_list')
 
 
 def form_valid(self, form):
