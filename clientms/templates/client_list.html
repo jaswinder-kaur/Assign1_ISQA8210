@@ -31,7 +31,19 @@
         <p><a href="{% url 'client_edit' client.pk %}">Edit</a> | <a href="{% url
   'client_delete' client.pk %}">Delete</a></p>
     </div>
- 
+ <div class="card-footer">
+   {% for vehicle in client.vehicles.all %}
+   <p>
+      <span class="font-weight-bold" style="color: blue">vehicle: {{ vehicle.make }}| </span>
+    <span class="font-muted">model: {{ vehicle.model }} | </span>
+        <span class="font-muted">VIN_number: {{ vehicle.VIN_number }} | </span>
+        <span class="font-muted">date_of_purchase: {{vehicle.date_of_purchase }} | </span>
+        <span class="font-muted-">date_of_last_service: {{ vehicle.date_of_last_service}} | </span>
+   </p>
+
+   <p><a href="{% url 'vehicle_edit' vehicle.pk %}">Edit</a> | <a href="{% url 'vehicle_delete' vehicle.pk %}">Delete</a></p>
+       {% endfor %}
+   </div>
     <br />
   {% endfor %}
 {% endblock content %}
