@@ -7,7 +7,11 @@ from .views import (
     ClientUpdateView,
     ClientDetailView,
     ClientDeleteView,
-    ClientCreateView
+    ClientCreateView,
+    VehicleListView,
+    VehicleUpdateView,
+    VehicleDeleteView,
+    VehicleCreateView
 
 )
 
@@ -20,7 +24,10 @@ urlpatterns = [
          ClientDetailView.as_view(), name='client_detail'),
     path('<int:pk>/delete/',
          ClientDeleteView.as_view(), name='client_delete'),
-    path('', ClientListView.as_view(), name='client_list'),
     path('new/', ClientCreateView.as_view(), name='client_new'),
+    path('vehicle', views.VehicleListView.as_view(), name='vehicle_list'),
+    path('vehicle/new/', VehicleCreateView.as_view(), name='vehicle_new'),
+    path('vehicle/<int:pk>/edit/', VehicleUpdateView.as_view(), name='vehicle_edit'),
+    path('vehicle/<int:pk>/delete/', VehicleDeleteView.as_view(), name='vehicle_delete'),
 
 ]
