@@ -33,6 +33,33 @@ class Comment(models.Model):
         related_name='comments',
     )
     comment = models.CharField(max_length=140)
+        def __str__(self):
+        return self.comment
+
+    def get_absolute_url(self):
+        return reverse('Client_list')
+    
+ class Vehicle(models.Model):
+    make = models.CharField(max_length=50, blank=False, null=False, default=' ')
+    model = models.CharField(max_length=50,blank=False, null=False, default=' ')
+    VIN_number = models.CharField(max_length=50, blank=True, null=True,default=' ')
+    date_of_purchase = models.DateField()
+    date_of_last_service = models.DateField()
+    author = models.ForeignKey(
+        get_user_model(),
+        on_delete=models.CASCADE,blank=True, null=True
+    )
+    client = models.ForeignKey(
+        Client,
+        on_delete=models.CASCADE,
+        related_name='vehicles',
+    )
+
+    def __str__(self):
+        return self.make
+
+    def get_absolute_url(self):
+        return reverse('Client_list',args=[str(self.id)])
     author = models.ForeignKey(
         get_user_model(),
         on_delete=models.CASCADE,
